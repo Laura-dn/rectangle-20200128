@@ -55,9 +55,10 @@ function getSquare() {
     return rectWidth * rectHeight;
 }
 
+//Возвращает периметр прямоугольника
 function getPerimeter() {
-    let rectWidth = getWidth(),
-        rectHeight = getHeight();
+    let rectWidth = getWidth(),     //Получаем ширину
+        rectHeight = getHeight();   //Получаем высоту
         
     return (rectWidth + rectHeight) * 2;
 }
@@ -185,7 +186,7 @@ function updateDOM(ev) {
             DOMResult = document.querySelector(".resultSquare");
             DOMResult.innerHTML = `Площадь прямоугольника: ${getSquare()} px.`;
             break;
-        case "btnPerimeter":
+        case "btnPerimeter":        //id кнопки "Расчитать периметр"
             DOMResult = document.querySelector(".resultPerimeter");
             DOMResult.innerHTML = `Периметр прямоугольника: ${getPerimeter()} px.`;
             break;
