@@ -6,14 +6,19 @@ body {
     display: flex;
 }
 
-.content {
+.content, #canvas {
     width: 50%;
+    border: 1px solid black;
+}
+
+.content {
     background-color: lightblue;
     text-align: center;
 }
 
-.view {
-    width: 50%;
+#canvas {
+    background-color: silver;
+    min-height: 100vh;
 }
 
 .content>article {
@@ -40,20 +45,12 @@ button {
     font-weight: bold;
 }
 
-#canvas {
-    background-color: silver;
-    height: 100%;
-    border: 1px solid black;
-}
-
 #rect {
     border: 2px solid maroon;
     display: none;
 }
 
-strong>span {
-    color: green;
-}
+strong>span {color: green;}
 
 .result {
     margin-top: 15px;
