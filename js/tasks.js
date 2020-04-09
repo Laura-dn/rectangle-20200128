@@ -1,17 +1,19 @@
+//Создаем объект Прямоугольник
 function createObjectRect() {
-    let DOMSpanX = document.querySelector(".task-1-x"),
-        DOMSpanY = document.querySelector(".task-1-y"),
-        DOMSpanX1 = document.querySelector(".task-1-x1"),
-        DOMSpanY1 = document.querySelector(".task-1-y1"),
-        DOMRect = document.querySelector("#rect");
+    let DOMSpanX = document.querySelector(".task-1-x"),     //Выбираем span для Х с первого задания
+        DOMSpanY = document.querySelector(".task-1-y"),     //Выбираем span для У с первого задания
+        DOMSpanX1 = document.querySelector(".task-1-x1"),   //Выбираем span для Х1 с первого задания
+        DOMSpanY1 = document.querySelector(".task-1-y1"),   //Выбираем span для У1 с первого задания
+        DOMRect = document.querySelector("#rect");          //Выбираем наш прямоугольник с холста
     
-    objRect = new Rectangle(coordObj);
+    objRect = new Rectangle(coordObj);          //Создаем объект Прямоугольник
+    //Выводим координаты в ДОМ
     DOMSpanX.innerHTML = objRect.x;
     DOMSpanY.innerHTML = objRect.y;
     DOMSpanX1.innerHTML = objRect.x1;
     DOMSpanY1.innerHTML = objRect.y1;
     
-    DOMRect.style.display = "inline-block";
+    DOMRect.style.display = "inline-block"; //Если пользователь не создал прямоугольник, открываем по умолчанию.
 }
 
 function checkObjectRect() {
@@ -146,24 +148,26 @@ function getDot(x, y) {
     DOMCanvas.append(DOMDiv);
 }
 
+//Запускаем функцию при клике на кнопку
 function updateDOM(ev) {
-    let DOMId = ev.target.id,
-        DOMRect = document.querySelector("#rect"),
-        DOMResult,
-        DOMInput,
-        DOMInputX,
-        DOMInputY,
-        whereDot,
-        updateWidth = 0,
-        updateHeight = 0,
-        updateX = 0,
-        updateY = 0;
+    let DOMId = ev.target.id,                       //Считываем id нажатой кнопки
+        DOMRect = document.querySelector("#rect"),  //
+        DOMResult,                                  //
+        DOMInput,                                   //
+        DOMInputX,                                  //
+        DOMInputY,                                  //
+        whereDot,                                   //
+        updateWidth = 0,                            //
+        updateHeight = 0,                           //
+        updateX = 0,                                //
+        updateY = 0;                                //
     
+    //Проверяем полученный id
     switch(DOMId) {
-        case "btnCreateObject":
+        case "btnCreateObject":     //id кнопки "Cоздать объект"
             createObjectRect();
             break;
-        case "btnWidth":
+        case "btnWidth":            //id кнопки "Расчитать ширину"
             DOMResult = document.querySelector(".resultWidth");
             DOMResult.innerHTML = `Ширина прямоугольника: ${getWidth()} px.`;
             break;
@@ -180,7 +184,7 @@ function updateDOM(ev) {
             DOMResult.innerHTML = `Периметр прямоугольника: ${getPerimeter()} px.`;
             break;
         case "btnUpdateWidth":
-            DOMInput = document.querySelector("#updateWidth"),
+            DOMInput = document.querySelector("#updateWidth");
             DOMResult = document.querySelector(".resultUpdateWidth");
             updateWidth = getUpdateWidth(DOMInput.value);
             

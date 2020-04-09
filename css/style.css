@@ -47,6 +47,8 @@ button {
     padding: 5px 10px;
 }
 
+#btnCreateObject {margin-top: 20px;}
+
 .error {
     color: red;
     font-weight: bold;

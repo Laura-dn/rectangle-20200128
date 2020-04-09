@@ -6,6 +6,7 @@
 
 class Rectangle
 {
+    //Создаем приватные переменные
     #x;
     #y;
     #x1;
@@ -24,6 +25,7 @@ class Rectangle
     get x1() {return this.#x1;}
     get y1() {return this.#y1;}
     
+    //Проверку переменных не делаем, т.к. пользователь ничего не вводит
     set x(value) {this.#x = value;}
     set y(value) {this.#y = value;}
     set x1(value) {this.#x1 = value;}
