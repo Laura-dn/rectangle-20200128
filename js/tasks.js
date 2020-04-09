@@ -1,3 +1,5 @@
+let objRect; //Объект класса Прямоугольник
+
 //Создаем объект Прямоугольник
 function createObjectRect() {
     let DOMSpanX = document.querySelector(".task-1-x"),     //Выбираем span для Х с первого задания
@@ -16,6 +18,7 @@ function createObjectRect() {
     DOMRect.style.display = "inline-block"; //Если пользователь не создал прямоугольник, открываем по умолчанию.
 }
 
+//Проверка объекта Прямоугольник
 function checkObjectRect() {
     if(objRect == undefined) {
         createObjectRect();
@@ -24,27 +27,30 @@ function checkObjectRect() {
     }
 }
 
+//Возвращает ширину прямоугольника
 function getWidth() {
     let rectWidth = 0;
     
-    checkObjectRect();
+    checkObjectRect();  //Проверяем, создан ли объект
     
-    rectWidth = objRect.x1 - objRect.x;
+    rectWidth = objRect.x1 - objRect.x; //Находим ширину нашего прямоугольника
     return rectWidth;
 }
 
+//Возвращает высоту прямоугольника
 function getHeight() {
     let rectHeight = 0;
         
-    checkObjectRect();
+    checkObjectRect();  //Проверяем, создан ли объект
     
-    rectHeight = objRect.y1 - objRect.y;
+    rectHeight = objRect.y1 - objRect.y;    //Находим высоту нашего прямоугольника
     return rectHeight;
 }
 
+//Возвращает площадь прямоугольника
 function getSquare() {
-    let rectWidth = getWidth(),
-        rectHeight = getHeight();
+    let rectWidth = getWidth(),     //Получаем ширину
+        rectHeight = getHeight();   //Получаем высоту
         
     return rectWidth * rectHeight;
 }
@@ -151,8 +157,8 @@ function getDot(x, y) {
 //Запускаем функцию при клике на кнопку
 function updateDOM(ev) {
     let DOMId = ev.target.id,                       //Считываем id нажатой кнопки
-        DOMRect = document.querySelector("#rect"),  //
-        DOMResult,                                  //
+        DOMRect = document.querySelector("#rect"),  //Выбираем наш прямоугольник на холсте
+        DOMResult,                                  //Переменная для вывода сообщения с результатом
         DOMInput,                                   //
         DOMInputX,                                  //
         DOMInputY,                                  //
@@ -171,11 +177,11 @@ function updateDOM(ev) {
             DOMResult = document.querySelector(".resultWidth");
             DOMResult.innerHTML = `Ширина прямоугольника: ${getWidth()} px.`;
             break;
-        case "btnHeight":
+        case "btnHeight":           //id кнопки "Расчитать высоту"
             DOMResult = document.querySelector(".resultHeight");
             DOMResult.innerHTML = `Высота прямоугольника: ${getHeight()} px.`;
             break;
-        case "btnSquare":
+        case "btnSquare":           //id кнопки "Расчитать площадь"
             DOMResult = document.querySelector(".resultSquare");
             DOMResult.innerHTML = `Площадь прямоугольника: ${getSquare()} px.`;
             break;
@@ -295,24 +301,11 @@ function updateDOM(ev) {
     }
 }
 
-let objRect,
-    event = "click",
-    arrBtn = [
-        "CreateObject",
-        "Width",
-        "Height",
-        "Square",
-        "Perimeter",
-        "UpdateWidth",
-        "UpdateHeight",
-        "UpdateWH",
-        "UpdateX",
-        "UpdateY",
-        "UpdateXY",
-        "WhereDot"
-    ];
+(function() {
+    let arrWithBtn = document.querySelectorAll("button"),
+        event = "click";
 
-for(let i = 0; i < arrBtn.length; i++) {
-    let btn = document.querySelector("#btn" + arrBtn[i]);
-    btn.addEventListener(event, updateDOM);
+for(let i = 0; i < arrWithBtn.length; i++) {
+    arrWithBtn[i].addEventListener(event, updateDOM);
 }
+})();
