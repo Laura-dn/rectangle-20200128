@@ -146,8 +146,13 @@ function getWhereDot(x, y) {
 
 function getDot(x, y) {
     let DOMDiv = document.createElement("div"),
-        DOMCanvas = document.querySelector("#canvas");
+        DOMCanvas = document.querySelector("#canvas"),
+        DOMOldDiv = document.querySelector("#dot12");
     
+    if(DOMOldDiv != null) {
+        DOMOldDiv.remove();
+    }
+
     DOMDiv.id = "dot12";
     DOMDiv.style.left = (x - 2) + "px";
     DOMDiv.style.top = (y - 2) + "px";
