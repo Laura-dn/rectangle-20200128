@@ -38,7 +38,7 @@ p {
     width: 100%;
     text-indent: 40px;
     text-align: left;
-    padding: 5px;
+    padding: 0 20px;
 }
 
 button {
@@ -64,9 +64,20 @@ strong>span {color: green;}
     font-weight: bold;
 }
 
+.result:last-child {padding-bottom: 20px;}
+
 input[type="number"] {
     padding: 5px;
     border-radius: 6px;
     text-align: center;
     margin-bottom: 15px;
+}
+
+#dot12 {
+    width: 4px;
+    height: 4px;
+    border: 1px solid red;
+    position: absolute;
+    background-color: red;
+    box-shadow: 0 0 3px yellow;
 }

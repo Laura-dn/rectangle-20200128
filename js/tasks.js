@@ -118,11 +118,42 @@ function getUpdateY(y) {
     }
 }
 
+function getWhereDot(x, y) {
+    let dotX = Number(x),
+        dotY = Number(y),
+        DOMRect = document.querySelector("#rect"),
+        currentX = DOMRect.offsetLeft - 1,
+        currentY = DOMRect.offsetTop - 1,
+        currentX1 = currentX + Number(DOMRect.style.width.replace("px", "")),
+        currentY1 = currentY + Number(DOMRect.style.height.replace("px", ""));
+
+    if(dotX >= currentX && dotX <= currentX1 &&
+       dotY >= currentY && dotY <= currentY1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getDot(x, y) {
+    let DOMDiv = document.createElement("div"),
+        DOMCanvas = document.querySelector("#canvas");
+    
+    DOMDiv.id = "dot12";
+    DOMDiv.style.left = (x - 2) + "px";
+    DOMDiv.style.top = (y - 2) + "px";
+
+    DOMCanvas.append(DOMDiv);
+}
+
 function updateDOM(ev) {
     let DOMId = ev.target.id,
-        DOMResult,
         DOMRect = document.querySelector("#rect"),
-        DOMInput = 0,
+        DOMResult,
+        DOMInput,
+        DOMInputX,
+        DOMInputY,
+        whereDot,
         updateWidth = 0,
         updateHeight = 0,
         updateX = 0,
@@ -223,9 +254,8 @@ function updateDOM(ev) {
             
             break;
         case "btnUpdateXY":
-            let DOMInputX = document.querySelector("#updateXYx"),
-                DOMInputY = document.querySelector("#updateXYy");
-            
+            DOMInputX = document.querySelector("#updateXYx");
+            DOMInputY = document.querySelector("#updateXYy");
             updateX = getUpdateX(DOMInputX.value);
             updateY = getUpdateY(DOMInputY.value);
             DOMResult = document.querySelector(".resultUpdateXY");
@@ -239,6 +269,21 @@ function updateDOM(ev) {
                 DOMResult.innerHTML = `!ОШИБКА в данных: ${DOMInputW.value} -- ${DOMInputH.value}`;
             }
             
+            break;
+        case "btnWhereDot":
+            DOMInputX = document.querySelector("#dotX");
+            DOMInputY = document.querySelector("#dotY");
+            DOMResult = document.querySelector(".resultWhereDot");
+            whereDot = getWhereDot(DOMInputX.value, DOMInputY.value);
+
+            getDot(DOMInputX.value, DOMInputY.value);
+
+            if(whereDot) {
+                DOMResult.innerHTML = `Точка с координатами (${DOMInputX.value}, ${DOMInputY.value}) находится внутри прямоугольника.`;
+            } else {
+                DOMResult.innerHTML = `Точка с координатами (${DOMInputX.value}, ${DOMInputY.value}) находится вне прямоугольника.`;
+            }
+
             break;
         default:
             alert("ОШИБКА выполнения операции!");
@@ -259,7 +304,8 @@ let objRect,
         "UpdateWH",
         "UpdateX",
         "UpdateY",
-        "UpdateXY"
+        "UpdateXY",
+        "WhereDot"
     ];
 
 for(let i = 0; i < arrBtn.length; i++) {
