@@ -195,7 +195,7 @@ function updateDOM(ev) {
             DOMResult = document.querySelector(".resultPerimeter");
             DOMResult.innerHTML = `Периметр прямоугольника: ${getPerimeter()} px.`;
             break;
-        case "btnUpdateWidth":
+        case "btnUpdateWidth":      //id кнопки "Изменить ширину"
             DOMInput = document.querySelector("#updateWidth");
             DOMResult = document.querySelector(".resultUpdateWidth");
             updateWidth = getUpdateWidth(DOMInput.value);
@@ -209,7 +209,7 @@ function updateDOM(ev) {
             }
             
             break;
-        case "btnUpdateHeight":
+        case "btnUpdateHeight":     //id кнопки "Изменить высоту"
             DOMInput = document.querySelector("#updateHeight");
             DOMResult = document.querySelector(".resultUpdateHeight");
             updateHeight = getUpdateHeight(DOMInput.value);
@@ -223,7 +223,7 @@ function updateDOM(ev) {
             }
             
             break;
-        case "btnUpdateWH":
+        case "btnUpdateWH":         //id кнопки "Изменить высоту и ширину"
             let DOMInputW = document.querySelector("#updateW"),
                 DOMInputH = document.querySelector("#updateH");
             
@@ -241,7 +241,7 @@ function updateDOM(ev) {
             }
             
             break;
-        case "btnUpdateX":
+        case "btnUpdateX":          //id кнопки "Изменить ось Х"
             DOMInput = document.querySelector("#updateX");
             DOMResult = document.querySelector(".resultUpdateX");
             updateX = getUpdateX(DOMInput.value);
@@ -255,7 +255,7 @@ function updateDOM(ev) {
             }
             
             break;
-        case "btnUpdateY":
+        case "btnUpdateY":          //id кнопки "Изменить ось Y"
             DOMInput = document.querySelector("#updateY");
             DOMResult = document.querySelector(".resultUpdateY");
             updateY = getUpdateY(DOMInput.value);
@@ -269,7 +269,7 @@ function updateDOM(ev) {
             }
             
             break;
-        case "btnUpdateXY":
+        case "btnUpdateXY":         //id кнопки "Изменить ось X и Y"
             DOMInputX = document.querySelector("#updateXYx");
             DOMInputY = document.querySelector("#updateXYy");
             updateX = getUpdateX(DOMInputX.value);
@@ -286,7 +286,7 @@ function updateDOM(ev) {
             }
             
             break;
-        case "btnWhereDot":
+        case "btnWhereDot":         //id кнопки Проверка точки
             DOMInputX = document.querySelector("#dotX");
             DOMInputY = document.querySelector("#dotY");
             DOMResult = document.querySelector(".resultWhereDot");
@@ -307,6 +307,7 @@ function updateDOM(ev) {
     }
 }
 
+//Вешаем события на все кнопки
 (function() {
     let arrWithBtn = document.querySelectorAll("button"),
         event = "click";
